@@ -1,0 +1,22 @@
+const express = require("express");
+const {
+  addJoke,
+  getAllJokes,
+  getJokeById,
+  getRandomJoke,
+} = require("../controllers/jokesController");
+const router = express.Router();
+
+// Ajouter une blague
+router.post("/", addJoke);
+
+// Consulter toutes les blagues
+router.get("/", getAllJokes);
+
+// Consulter une blague aléatoire
+router.get("/random", getRandomJoke);
+
+// Consulter une blague par ID
+router.get("/:id", getJokeById);
+
+module.exports = router;
