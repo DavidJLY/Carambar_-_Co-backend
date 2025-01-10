@@ -4,15 +4,16 @@ const swaggerUi = require("swagger-ui-express");
 // Configuration des options Swagger
 const swaggerOptions = {
   definition: {
-    openapi: "3.0.0", // Version OpenAPI
+    openapi: "3.0.0",
     info: {
-      title: "API Jokes", // Titre de l'API
-      version: "1.0.0", // Version de l'API
+      title: "API Jokes",
+      version: "1.0.0",
       description: "Documentation de l'API Jokes",
     },
     servers: [
       {
-        url: "http://localhost:3000", // URL de votre API (modifiez selon votre environnement)
+        // url: "http://localhost:3000",
+        url: "https://carambar-and-co-backend.onrender.com/api-docs",
       },
     ],
   },
