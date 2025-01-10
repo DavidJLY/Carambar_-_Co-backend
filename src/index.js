@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
+const swaggerConfig = require("./swaggerConfig");
 const PORT = 3000;
 
 // Autoriser toutes les origines
@@ -8,6 +9,9 @@ app.use(cors());
 
 // Middleware pour parser le JSON
 app.use(express.json());
+
+// Ajout de Swagger
+swaggerConfig(app);
 
 // Importer les routes
 const jokesRoutes = require("./routes/jokesRoutes");

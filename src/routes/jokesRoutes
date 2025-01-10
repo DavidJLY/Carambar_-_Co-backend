@@ -7,16 +7,134 @@ const {
 } = require("../controllers/jokesController");
 const router = express.Router();
 
-// Ajouter une blague
+/**
+ * @swagger
+ * tags:
+ *   name: Jokes
+ *   description: Gestion des blagues
+ */
+
+/**
+ * @swagger
+ * /jokes:
+ *   post:
+ *     summary: Ajouter une nouvelle blague
+ *     tags: [Jokes]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               content:
+ *                 type: string
+ *                 description: Contenu de la blague
+ *     responses:
+ *       201:
+ *         description: Blague ajoutée avec succès
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 id:
+ *                   type: integer
+ *                   description: ID unique de la blague
+ *                 content:
+ *                   type: string
+ *                   description: Contenu de la blague
+ *       500:
+ *         description: Erreur serveur
+ */
 router.post("/", addJoke);
 
-// Consulter toutes les blagues
+/**
+ * @swagger
+ * /jokes:
+ *   get:
+ *     summary: Consulter toutes les blagues
+ *     tags: [Jokes]
+ *     responses:
+ *       200:
+ *         description: Liste de toutes les blagues
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 type: object
+ *                 properties:
+ *                   id:
+ *                     type: integer
+ *                     description: ID unique de la blague
+ *                   content:
+ *                     type: string
+ *                     description: Contenu de la blague
+ *       500:
+ *         description: Erreur serveur
+ */
 router.get("/", getAllJokes);
 
-// Consulter une blague aléatoire
+/**
+ * @swagger
+ * /jokes/random:
+ *   get:
+ *     summary: Consulter une blague aléatoire
+ *     tags: [Jokes]
+ *     responses:
+ *       200:
+ *         description: Une blague aléatoire récupérée avec succès
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 id:
+ *                   type: integer
+ *                   description: ID unique de la blague
+ *                 content:
+ *                   type: string
+ *                   description: Contenu de la blague
+ *       404:
+ *         description: Blague non trouvée
+ *       500:
+ *         description: Erreur serveur
+ */
 router.get("/random", getRandomJoke);
 
-// Consulter une blague par ID
+/**
+ * @swagger
+ * /jokes/{id}:
+ *   get:
+ *     summary: Consulter une blague par ID
+ *     tags: [Jokes]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *         description: ID unique de la blague
+ *     responses:
+ *       200:
+ *         description: Détails de la blague récupérés avec succès
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 id:
+ *                   type: integer
+ *                   description: ID unique de la blague
+ *                 content:
+ *                   type: string
+ *                   description: Contenu de la blague
+ *       404:
+ *         description: Blague non trouvée
+ *       500:
+ *         description: Erreur serveur
+ */
 router.get("/:id", getJokeById);
 
 module.exports = router;
