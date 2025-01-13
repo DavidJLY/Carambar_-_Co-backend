@@ -13,11 +13,12 @@ const swaggerOptions = {
     servers: [
       {
         // url: "http://localhost:3000",
-        url: "https://carambar-and-co-backend.onrender.com/api-docs",
+        url: "https://carambar-and-co-backend.onrender.com/v1/jokes",
       },
     ],
   },
-  apis: ["./src/routes/jokesRoutes"], // Chemin des fichiers contenant les routes et commentaires Swagger
+  // Chemin des fichiers contenant les routes et commentaires Swagger
+  apis: ["./src/routes/jokesRoutes"],
 };
 
 const swaggerSpec = swaggerJsdoc(swaggerOptions);
