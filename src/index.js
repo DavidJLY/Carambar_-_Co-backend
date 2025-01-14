@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const swaggerConfig = require("./swaggerConfig");
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 // Autoriser toutes les origines
 app.use(cors());
